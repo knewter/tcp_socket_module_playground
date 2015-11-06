@@ -16,8 +16,12 @@ defmodule TCPSocketModulePlayground.Runner do
     {:noreply, socket}
   end
 
-  def handle_info(foo, socket) do
-    IO.puts "unknown: #{inspect foo}"
+  def handle_info({:tcp_closed, _port}, socket) do
+    {:stop, :normal, :ok}
+  end
+
+  def handle_info(unknown, socket) do
+    IO.puts "unknown: #{inspect unknown}"
     {:noreply, socket}
   end
 end
