@@ -6,7 +6,6 @@ defmodule TCPSocketModulePlayground do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
     port = Application.get_env(:tcp_socket_module_playground, :server)[:port]
-    IO.puts "port #{port}"
 
     children = [
       # Define workers and child supervisors to be supervised

@@ -9,7 +9,6 @@ defmodule TCPSocketModulePlayground.Server do
       {:ok, client} ->
         {:ok, runner} = TCPSocketModulePlayground.Runner.start_link(client)
         :ok = :gen_tcp.controlling_process(client, runner)
-        IO.puts "zomg"
         acceptor_loop(socket)
       {:error, :closed} ->
         acceptor_loop(socket)
